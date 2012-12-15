@@ -1,0 +1,43 @@
+#include<stdio.h>
+//#include<conio.h>
+int main()
+{
+int t;
+scanf("%d",&t);
+while(t--)
+{
+int temp,x,ans[160],index=0,i,k=1,num;
+scanf("%d",&num);
+for(i=0;i<160;i++)
+ans[i]=-1;
+ans[0]=1;
+for(i=1;i<=num;i++)
+{
+index=0;
+temp=0;
+while(ans[index]>=0)
+{
+x=ans[index]*i+temp;
+ans[index]=x%10;
+temp=x/10;
+index++;
+}
+if(temp!=0 )
+{
+k=index;
+while(temp!=0)
+{
+ans[k]=temp%10;
+temp=temp/10;
+k++;
+}
+}
+}
+if(k<index)k=index;
+for(i=(k-1);i>=0;i--)
+printf("%d",ans[i]);
+printf("\n");
+}
+// getch();
+return 0;
+} 
